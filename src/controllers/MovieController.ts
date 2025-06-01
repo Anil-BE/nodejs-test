@@ -35,7 +35,7 @@ export class MovieController {
   public async getMovieDetails(req: Request, res: Response): Promise<void> {
     try {
       const movieId = req.params.id;
-      const movie = await this.movieModel.getMovieById(movieId);
+      const movie = await this.movieModel.getMovieById(String(movieId));
       
       if (!movie) {
         res.status(404).json({ error: 'Movie not found' });
@@ -57,14 +57,13 @@ export class MovieController {
       const sortOrder = (req.query.sort as SortOrder) || 'ASC';
       const limit = 50;
 
-      const movies = await this.movieModel.getMoviesByYear(year, page, limit, sortOrder);
+      const movies = await this.movieModel.getMoviesByYear(String(year), page, limit, sortOrder);
       
       const response: ApiResponse<MovieListResponse[]> = {
         data: movies,
         pagination: {
           page,
           limit,
-          year,
           sort_order: sortOrder.toUpperCase(),
           hasMore: movies.length === limit
         }
@@ -83,14 +82,13 @@ export class MovieController {
       const page = parseInt(req.query.page as string) || 1;
       const limit = 50;
 
-      const movies = await this.movieModel.getMoviesByGenre(genre, page, limit);
+      const movies = await this.movieModel.getMoviesByGenre(String(genre), page, limit);
       
       const response: ApiResponse<MovieListResponse[]> = {
         data: movies,
         pagination: {
           page,
           limit,
-          genre,
           hasMore: movies.length === limit
         }
       };

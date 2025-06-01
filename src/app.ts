@@ -60,8 +60,6 @@ async function initializeApp(): Promise<void> {
 }
 
 // Start the application
-if (require.main === module) {
-  initializeApp();
-}
+initializeApp();
 
 export default app;

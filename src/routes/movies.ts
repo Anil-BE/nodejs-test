@@ -19,19 +19,6 @@ export function createMovieRoutes(): Router {
       return movieController.getAllMovies(req, res);
     });
 
-  // Get movie details by ID
-  router.get('/:id',
-    // query params validations using express-validator
-    [
-      param('id').notEmpty().withMessage('Movie ID is required')
-    ], (req: Request, res: Response) => {
-      const errors = validationResult(req);
-      if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-      }
-      return movieController.getMovieDetails(req, res);
-    });
-
   // Get movies by year
   router.get('/year/:year',
     // query params validations using express-validator
@@ -59,6 +46,19 @@ export function createMovieRoutes(): Router {
         return res.status(400).json({ errors: errors.array() });
       }
       return movieController.getMoviesByGenre(req, res);
+    });
+
+  // Get movie details by ID
+  router.get('/:id',
+    // query params validations using express-validator
+    [
+      param('id').notEmpty().withMessage('Movie ID is required')
+    ], (req: Request, res: Response) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      return movieController.getMovieDetails(req, res);
     });
 
   return router;
