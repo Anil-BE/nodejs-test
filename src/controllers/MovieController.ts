@@ -21,7 +21,7 @@ export class MovieController {
         pagination: {
           page,
           limit,
-          has_more: movies.length === limit
+          hasMore: movies.length === limit
         }
       };
 
@@ -66,7 +66,7 @@ export class MovieController {
           limit,
           year,
           sort_order: sortOrder.toUpperCase(),
-          has_more: movies.length === limit
+          hasMore: movies.length === limit
         }
       };
 
@@ -91,7 +91,7 @@ export class MovieController {
           page,
           limit,
           genre,
-          has_more: movies.length === limit
+          hasMore: movies.length === limit
         }
       };
 

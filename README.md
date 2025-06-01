@@ -48,7 +48,7 @@ GET /api/movies
   "pagination": {
     "page": 1,
     "limit": 50,
-    "has_more": true
+    "hasMore": true
   }
 }
 ```
@@ -106,7 +106,7 @@ GET /api/movies/year/:year
     "limit": 50,
     "year": "1994",
     "sort_order": "ASC",
-    "has_more": true
+    "hasMore": true
   }
 }
 ```
@@ -137,7 +137,7 @@ GET /api/movies/genre/:genre
     "page": 1,
     "limit": 50,
     "genre": "Drama",
-    "has_more": true
+    "hasMore": true
   }
 }
 ```
